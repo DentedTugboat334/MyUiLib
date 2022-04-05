@@ -138,7 +138,7 @@ function windowTable:CreateWindow(title)
 
 		UIGridLayout.Parent = newPage
 		UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		UIGridLayout.Padding = UDim2.new(0,3)
+		UIGridLayout.Padding = UDim.new(0,3)
 
 		UICorner_10.CornerRadius = UDim.new(0, 15)
 		UICorner_10.Parent = Eclipse
