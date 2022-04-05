@@ -207,3 +207,11 @@ function windowTable:CreateWindow(title)
 end
 
 return windowTable
+
+
+--windowld = loadstring(game:HttpGet("https://raw.githubusercontent.com/DentedTugboat334/MyUiLib/main/uilib.lua"))()
+--window = windowld:CreateWindow("Aba")
+--Tab = window:CreateTab("main")
+--Tab:CreateBtn('Print Test', function()
+--	print('Test')
+--end)
