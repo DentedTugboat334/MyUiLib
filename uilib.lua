@@ -1,5 +1,9 @@
 local windowTable = {}
 
+if game.CoreGui:FindFirstChild("Eclipse") then
+	game.CoreGui:FindFirstChild("Eclipse"):Destroy()
+end
+
 function windowTable:CreateWindow(title)
 	local Eclipse = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
@@ -120,7 +124,7 @@ function windowTable:CreateWindow(title)
 		local UICorner_3 = Instance.new("UICorner")
 		local newPage = Instance.new("Frame")
 		local UICorner_9 = Instance.new("UICorner")
-		local UIGridLayout = Instance.new("UIGridLayout")
+		local UIGridLayout = Instance.new("UIListLayout")
 		local UICorner_10 = Instance.new("UICorner")
 		
 		newPage.Name = "newPage"
@@ -134,8 +138,7 @@ function windowTable:CreateWindow(title)
 
 		UIGridLayout.Parent = newPage
 		UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		UIGridLayout.CellPadding = UDim2.new(0, 10, 0, 10)
-		UIGridLayout.CellSize = UDim2.new(0, 100, 0, 25)
+		UIGridLayout.Padding = UDim2.new(0,3)
 
 		UICorner_10.CornerRadius = UDim.new(0, 15)
 		UICorner_10.Parent = Eclipse
@@ -174,7 +177,32 @@ function windowTable:CreateWindow(title)
 				BackgroundColor3 = Color3.fromRGB(255,109,83)
 			}):Play()
 		end)
+		local elementHandler = {}
+		function elementHandler:CreateBtn(btnText, callback)
+			btnText = btnText or "Text Button"
+			local TextButton = Instance.new("TextButton")
+			local UICorner = Instance.new("UICorner")
+
+			--Properties:
+
+			TextButton.Parent = newPage
+			TextButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+			TextButton.Size = UDim2.new(0, 527, 0, 25)
+			TextButton.Font = Enum.Font.SourceSans
+			TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextButton.TextScaled = true
+			TextButton.TextSize = 14.000
+			TextButton.TextWrapped = true
+			TextButton.Text = btnText
+			
+			TextButton.MouseButton1Click:Connect(function()
+				callback()
+			end)
+
+			UICorner.Parent = TextButton
+		end
 	end
+	
 	return TabHandler
 end
 
